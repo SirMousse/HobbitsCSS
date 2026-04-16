@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Das große Rätsel von Hobbingen</title>
+    <link rel="stylesheet" href="hobbit_styles.css" />
+    </head>
+    <body>
+    <div class="bg" aria-hidden="true">
+    <!-- The One Ring -->
+    <svg class="ring" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <radialGradient id="ringGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#f5d060"/>
+          <stop offset="35%" stop-color="#d4a010"/>
+          <stop offset="60%" stop-color="#b88000"/>
+          <stop offset="80%" stop-color="#e8c040"/>
+          <stop offset="100%" stop-color="#a06800"/>
+        </radialGradient>
+        <radialGradient id="ringInner" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#c8900a"/>
+          <stop offset="50%" stop-color="#a07008"/>
+          <stop offset="100%" stop-color="#805006"/>
+        </radialGradient>
+      </defs>
+      <!-- outer ring body -->
+      <circle cx="50" cy="50" r="46" fill="none" stroke="url(#ringGrad)" stroke-width="10"/>
+      <!-- inner edge highlight -->
+      <circle cx="50" cy="50" r="41" fill="none" stroke="rgba(255,230,120,0.55)" stroke-width="1.5"/>
+      <!-- outer edge shadow -->
+      <circle cx="50" cy="50" r="50" fill="none" stroke="rgba(80,45,0,0.45)" stroke-width="2"/>
+      <!-- Elvish inscription (simplified dots along ring) -->
+      <circle cx="50" cy="4"  r="1.5" fill="rgba(200,150,10,0.70)"/>
+      <circle cx="74" cy="11" r="1.2" fill="rgba(200,150,10,0.60)"/>
+      <circle cx="90" cy="32" r="1.5" fill="rgba(200,150,10,0.70)"/>
+      <circle cx="95" cy="55" r="1.2" fill="rgba(200,150,10,0.60)"/>
+      <circle cx="82" cy="78" r="1.5" fill="rgba(200,150,10,0.70)"/>
+      <circle cx="60" cy="93" r="1.2" fill="rgba(200,150,10,0.60)"/>
+      <circle cx="38" cy="95" r="1.5" fill="rgba(200,150,10,0.70)"/>
+      <circle cx="18" cy="84" r="1.2" fill="rgba(200,150,10,0.60)"/>
+      <circle cx="6"  cy="64" r="1.5" fill="rgba(200,150,10,0.70)"/>
+      <circle cx="5"  cy="40" r="1.2" fill="rgba(200,150,10,0.60)"/>
+      <circle cx="16" cy="20" r="1.5" fill="rgba(200,150,10,0.70)"/>
+      <circle cx="34" cy="7"  r="1.2" fill="rgba(200,150,10,0.60)"/>
+      <!-- inner hole -->
+      <circle cx="50" cy="50" r="36" fill="rgba(0,0,0,0.04)"/>
+    </svg>
+    <!-- glow follows ring position -->
+    <div class="ring-glow"></div>
+    <!-- darkness veil -->
+    <div class="darkness"></div>
+    <!-- fireflies -->
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <!-- Hobbit Village SVG Scene -->
+    <svg class="hobbit-scene" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+      <defs>
+        <radialGradient id="doorGlow1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffe080" stop-opacity="0.90"/>
+          <stop offset="60%" stop-color="#ffb830" stop-opacity="0.50"/>
+          <stop offset="100%" stop-color="#ff8800" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="doorGlow2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffd060" stop-opacity="0.85"/>
+          <stop offset="60%" stop-color="#ffa020" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#ff7000" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="winGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffe8a0" stop-opacity="0.80"/>
+          <stop offset="100%" stop-color="#ffcc40" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- ═══ HOBBIT HOUSE 1 — far left, small ═══ -->
+      <g transform="translate(30, 140)">
+        <!-- hill mound -->
+        <ellipse cx="120" cy="220" rx="145" ry="80" fill="#4a8c22"/>
+        <ellipse cx="120" cy="215" rx="130" ry="68" fill="#5aa028"/>
+        <!-- roof turf top -->
+        <ellipse cx="120" cy="170" rx="100" ry="45" fill="#62b030"/>
+        <ellipse cx="120" cy="165" rx="88"  ry="36" fill="#6ec036"/>
+        <!-- chimney -->
+        <rect x="150" y="130" width="14" height="44" rx="3" fill="#8b6040"/>
+        <rect x="147" y="126" width="20" height="8"  rx="2" fill="#7a5035"/>
+        <!-- smoke -->
+        <ellipse cx="157" cy="118" rx="6"  ry="8"  fill="rgba(200,200,180,0.35)"/>
+        <ellipse cx="160" cy="106" rx="8"  ry="10" fill="rgba(200,200,180,0.25)"/>
+        <ellipse cx="155" cy="94"  rx="10" ry="12" fill="rgba(200,200,180,0.15)"/>
+        <!-- front wall face -->
+        <ellipse cx="120" cy="230" rx="72" ry="42" fill="#c8a878"/>
+        <ellipse cx="120" cy="232" rx="66" ry="38" fill="#d4b488"/>
+        <!-- round door frame -->
+        <ellipse cx="120" cy="248" rx="26" ry="28" fill="#6b3e18"/>
+        <ellipse cx="120" cy="248" rx="22" ry="24" fill="#7a4820"/>
+        <!-- door warm glow -->
+        <ellipse cx="120" cy="248" rx="28" ry="30" fill="url(#doorGlow1)" opacity="0.8"/>
+        <!-- door panels -->
+        <ellipse cx="120" cy="248" rx="20" ry="22" fill="#5a3010"/>
+        <line x1="120" y1="226" x2="120" y2="270" stroke="#7a4820" stroke-width="2"/>
+        <line x1="100" y1="248" x2="140" y2="248" stroke="#7a4820" stroke-width="2"/>
+        <!-- door knob -->
+        <circle cx="128" cy="248" r="3" fill="#c89030"/>
+        <circle cx="128" cy="248" r="2" fill="#e8b040"/>
+        <!-- windows left -->
+        <ellipse cx="82"  cy="222" rx="16" ry="12" fill="#5a3010"/>
+        <ellipse cx="82"  cy="222" rx="13" ry="10" fill="#ffe8a0" opacity="0.85"/>
+        <ellipse cx="82"  cy="222" rx="16" ry="12" fill="url(#winGlow)" opacity="0.6"/>
+        <line x1="82"  y1="210" x2="82"  y2="234" stroke="#6b3e18" stroke-width="1.5"/>
+        <line x1="69"  y1="222" x2="95"  y2="222" stroke="#6b3e18" stroke-width="1.5"/>
+        <!-- windows right -->
+        <ellipse cx="158" cy="222" rx="16" ry="12" fill="#5a3010"/>
+        <ellipse cx="158" cy="222" rx="13" ry="10" fill="#ffe8a0" opacity="0.85"/>
+        <ellipse cx="158" cy="222" rx="16" ry="12" fill="url(#winGlow)" opacity="0.6"/>
+        <line x1="158" y1="210" x2="158" y2="234" stroke="#6b3e18" stroke-width="1.5"/>
+        <line x1="145" y1="222" x2="171" y2="222" stroke="#6b3e18" stroke-width="1.5"/>
+        <!-- path from door -->
+        <ellipse cx="120" cy="285" rx="18" ry="6"  fill="rgba(210,185,120,0.55)"/>
+        <ellipse cx="120" cy="300" rx="14" ry="5"  fill="rgba(210,185,120,0.40)"/>
+        <!-- garden flowers -->
+        <circle cx="90"  cy="268" r="4" fill="#e85080"/>
+        <circle cx="96"  cy="272" r="3" fill="#f0a030"/>
+        <circle cx="84"  cy="274" r="3" fill="#e06040"/>
+        <circle cx="148" cy="266" r="4" fill="#e85080"/>
+        <circle cx="154" cy="271" r="3" fill="#f8c040"/>
+        <circle cx="142" cy="273" r="3" fill="#cc4060"/>
+        <!-- fence posts -->
+        <rect x="70"  y="255" width="4" height="22" rx="1" fill="#9b6a3a"/>
+        <rect x="84"  y="252" width="4" height="25" rx="1" fill="#9b6a3a"/>
+        <rect x="98"  y="251" width="4" height="26" rx="1" fill="#9b6a3a"/>
+        <rect x="138" y="251" width="4" height="26" rx="1" fill="#9b6a3a"/>
+        <rect x="152" y="252" width="4" height="25" rx="1" fill="#9b6a3a"/>
+        <rect x="166" y="255" width="4" height="22" rx="1" fill="#9b6a3a"/>
+        <line x1="72"  y1="260" x2="168" y2="260" stroke="#9b6a3a" stroke-width="2"/>
+        <line x1="72"  y1="268" x2="168" y2="268" stroke="#8a5e30" stroke-width="1.5"/>
+      </g>
+
+      <!-- ═══ HOBBIT HOUSE 2 — centre-left, larger ═══ -->
+      <g transform="translate(310, 80)">
+        <!-- big hill mound -->
+        <ellipse cx="170" cy="290" rx="200" ry="100" fill="#488a20"/>
+        <ellipse cx="170" cy="282" rx="185" ry="88"  fill="#52982a"/>
+        <!-- turf roof -->
+        <ellipse cx="170" cy="220" rx="155" ry="65"  fill="#5eac2e"/>
+        <ellipse cx="170" cy="212" rx="138" ry="52"  fill="#6cba34"/>
+        <!-- chimney left -->
+        <rect x="88"  y="168" width="16" height="56" rx="3" fill="#8b6040"/>
+        <rect x="85"  y="164" width="22" height="9"  rx="2" fill="#7a5035"/>
+        <!-- chimney right -->
+        <rect x="228" y="178" width="14" height="48" rx="3" fill="#8b6040"/>
+        <rect x="225" y="174" width="20" height="8"  rx="2" fill="#7a5035"/>
+        <!-- smoke left -->
+        <ellipse cx="96"  cy="155" rx="7"  ry="9"  fill="rgba(200,200,180,0.35)"/>
+        <ellipse cx="100" cy="141" rx="9"  ry="11" fill="rgba(200,200,180,0.22)"/>
+        <ellipse cx="94"  cy="127" rx="11" ry="13" fill="rgba(200,200,180,0.14)"/>
+        <!-- smoke right -->
+        <ellipse cx="235" cy="164" rx="6"  ry="8"  fill="rgba(200,200,180,0.30)"/>
+        <ellipse cx="238" cy="152" rx="8"  ry="10" fill="rgba(200,200,180,0.18)"/>
+        <!-- front face -->
+        <ellipse cx="170" cy="300" rx="105" ry="62" fill="#c8a878"/>
+        <ellipse cx="170" cy="304" rx="96"  ry="56" fill="#d4b890"/>
+        <!-- round door frame large -->
+        <ellipse cx="170" cy="324" rx="36" ry="40" fill="#6b3e18"/>
+        <ellipse cx="170" cy="324" rx="31" ry="35" fill="#7a4820"/>
+        <ellipse cx="170" cy="324" rx="40" ry="44" fill="url(#doorGlow2)" opacity="0.85"/>
+        <!-- door -->
+        <ellipse cx="170" cy="324" rx="28" ry="32" fill="#4a2808"/>
+        <line x1="170" y1="292" x2="170" y2="356" stroke="#7a4820" stroke-width="2.5"/>
+        <line x1="142" y1="324" x2="198" y2="324" stroke="#7a4820" stroke-width="2.5"/>
+        <!-- door knob -->
+        <circle cx="182" cy="324" r="4"   fill="#b87820"/>
+        <circle cx="182" cy="324" r="2.5" fill="#e0a030"/>
+        <!-- letter box slot -->
+        <rect x="160" y="340" width="20" height="5" rx="2" fill="#6b3e18"/>
+        <!-- window far left -->
+        <ellipse cx="104" cy="284" rx="20" ry="15" fill="#5a3010"/>
+        <ellipse cx="104" cy="284" rx="17" ry="12" fill="#ffe8a0" opacity="0.88"/>
+        <ellipse cx="104" cy="284" rx="20" ry="15" fill="url(#winGlow)" opacity="0.55"/>
+        <line x1="104" y1="269" x2="104" y2="299" stroke="#6b3e18" stroke-width="1.5"/>
+        <line x1="84"  y1="284" x2="124" y2="284" stroke="#6b3e18" stroke-width="1.5"/>
+        <!-- window near left -->
+        <ellipse cx="134" cy="278" rx="18" ry="13" fill="#5a3010"/>
+        <ellipse cx="134" cy="278" rx="15" ry="11" fill="#ffe8a0" opacity="0.85"/>
+        <ellipse cx="134" cy="278" rx="18" ry="13" fill="url(#winGlow)" opacity="0.55"/>
+        <line x1="134" y1="265" x2="134" y2="291" stroke="#6b3e18" stroke-width="1.5"/>
+        <line x1="116" y1="278" x2="152" y2="278" stroke="#6b3e18" stroke-width="1.5"/>
+        <!-- window near right -->
+        <ellipse cx="206" cy="278" rx="18" ry="13" fill="#5a3010"/>
+        <ellipse cx="206" cy="278" rx="15" ry="11" fill="#ffe8a0" opacity="0.85"/>
+        <ellipse cx="206" cy="278" rx="18" ry="13" fill="url(#winGlow)" opacity="0.55"/>
+        <line x1="206" y1="265" x2="206" y2="291" stroke="#6b3e18" stroke-width="1.5"/>
+        <line x1="188" y1="278" x2="224" y2="278" stroke="#6b3e18" stroke-width="1.5"/>
+        <!-- window far right -->
+        <ellipse cx="236" cy="284" rx="20" ry="15" fill="#5a3010"/>
+        <ellipse cx="236" cy="284" rx="17" ry="12" fill="#ffe8a0" opacity="0.88"/>
+        <ellipse cx="236" cy="284" rx="20" ry="15" fill="url(#winGlow)" opacity="0.55"/>
+        <line x1="236" y1="269" x2="236" y2="299" stroke="#6b3e18" stroke-width="1.5"/>
+        <line x1="216" y1="284" x2="256" y2="284" stroke="#6b3e18" stroke-width="1.5"/>
+        <!-- path -->
+        <ellipse cx="170" cy="370" rx="24" ry="8"  fill="rgba(210,185,120,0.55)"/>
+        <ellipse cx="170" cy="388" rx="18" ry="6"  fill="rgba(210,185,120,0.42)"/>
+        <ellipse cx="168" cy="405" rx="14" ry="5"  fill="rgba(210,185,120,0.30)"/>
+        <!-- garden -->
+        <circle cx="112" cy="348" r="5" fill="#e06070"/>
+        <circle cx="120" cy="354" r="4" fill="#f0a030"/>
+        <circle cx="104" cy="355" r="4" fill="#e85080"/>
+        <circle cx="118" cy="345" r="3" fill="#ffd040"/>
+        <circle cx="222" cy="346" r="5" fill="#cc4060"/>
+        <circle cx="230" cy="353" r="4" fill="#e0a030"/>
+        <circle cx="216" cy="354" r="4" fill="#e85080"/>
+        <circle cx="228" cy="343" r="3" fill="#ffd040"/>
+        <!-- mailbox post -->
+        <rect x="255" y="318" width="5" height="40" rx="1" fill="#8b6040"/>
+        <rect x="252" y="312" width="20" height="12" rx="3" fill="#6b4a20"/>
+        <rect x="253" y="314" width="18" height="10" rx="2" fill="#7a5428"/>
+        <!-- fence -->
+        <rect x="94"  y="334" width="4" height="28" rx="1" fill="#9b6a3a"/>
+        <rect x="110" y="330" width="4" height="32" rx="1" fill="#9b6a3a"/>
+        <rect x="126" y="328" width="4" height="34" rx="1" fill="#9b6a3a"/>
+        <rect x="210" y="328" width="4" height="34" rx="1" fill="#9b6a3a"/>
+        <rect x="226" y="330" width="4" height="32" rx="1" fill="#9b6a3a"/>
+        <rect x="242" y="334" width="4" height="28" rx="1" fill="#9b6a3a"/>
+        <line x1="96"  y1="342" x2="244" y2="342" stroke="#9b6a3a" stroke-width="2.5"/>
+        <line x1="96"  y1="352" x2="244" y2="352" stroke="#8a5e30" stroke-width="2"/>
+        <!-- gate in middle of fence -->
+        <rect x="152" y="354" width="36" height="26" rx="2" fill="none" stroke="#9b6a3a" stroke-width="2"/>
+        <line x1="170" y1="354" x2="170" y2="380" stroke="#9b6a3a" stroke-width="1.5"/>
+        <circle cx="182" cy="367" r="2.5" fill="#c89030"/>
+      </g>
+
+      <!-- ═══ HOBBIT HOUSE 3 — right side, medium ═══ -->
+      <g transform="translate(820, 120)">
+        <!-- hill mound -->
+        <ellipse cx="150" cy="260" rx="175" ry="90" fill="#4a8c22"/>
+        <ellipse cx="150" cy="252" rx="158" ry="78" fill="#54a028"/>
+        <!-- turf roof -->
+        <ellipse cx="150" cy="192" rx="130" ry="56" fill="#60b02e"/>
+        <ellipse cx="150" cy="184" rx="115" ry="45" fill="#6cbe34"/>
+        <!-- chimney -->
+        <rect x="195" y="150" width="15" height="50" rx="3" fill="#8b6040"/>
+        <rect x="192" y="146" width="21" height="8"  rx="2" fill="#7a5035"/>
+        <!-- smoke -->
+        <ellipse cx="202" cy="138" rx="6"  ry="8"  fill="rgba(200,200,180,0.38)"/>
+        <ellipse cx="206" cy="124" rx="8"  ry="10" fill="rgba(200,200,180,0.24)"/>
+        <ellipse cx="200" cy="110" rx="10" ry="12" fill="rgba(200,200,180,0.14)"/>
+        <!-- front wall face -->
+        <ellipse cx="150" cy="272" rx="90"  ry="54" fill="#c8a878"/>
+        <ellipse cx="150" cy="276" rx="82"  ry="48" fill="#d4b488"/>
+        <!-- round door -->
+        <ellipse cx="150" cy="294" rx="30" ry="34" fill="#6b3e18"/>
+        <ellipse cx="150" cy="294" rx="26" ry="30" fill="#7a4820"/>
+        <ellipse cx="150" cy="294" rx="34" ry="38" fill="url(#doorGlow1)" opacity="0.80"/>
+        <ellipse cx="150" cy="294" rx="23" ry="27" fill="#4a2808"/>
+        <line x1="150" y1="267" x2="150" y2="321" stroke="#7a4820" stroke-width="2"/>
+        <line x1="127" y1="294" x2="173" y2="294" stroke="#7a4820" stroke-width="2"/>
+        <circle cx="162" cy="294" r="3.5" fill="#c89030"/>
+        <circle cx="162" cy="294" r="2"   fill="#e8b040"/>
+        <!-- windows -->
+        <ellipse cx="98"  cy="258" rx="18" ry="13" fill="#5a3010"/>
+        <ellipse cx="98"  cy="258" rx="15" ry="11" fill="#ffe8a0" opacity="0.88"/>
+        <ellipse cx="98"  cy="258" rx="18" ry="13" fill="url(#winGlow)" opacity="0.55"/>
+        <line x1="98"  y1="245" x2="98"  y2="271" stroke="#6b3e18" stroke-width="1.5"/>
+        <line x1="80"  y1="258" x2="116" y2="258" stroke="#6b3e18" stroke-width="1.5"/>
+        <ellipse cx="202" cy="258" rx="18" ry="13" fill="#5a3010"/>
+        <ellipse cx="202" cy="258" rx="15" ry="11" fill="#ffe8a0" opacity="0.88"/>
+        <ellipse cx="202" cy="258" rx="18" ry="13" fill="url(#winGlow)" opacity="0.55"/>
+        <line x1="202" y1="245" x2="202" y2="271" stroke="#6b3e18" stroke-width="1.5"/>
+        <line x1="184" y1="258" x2="220" y2="258" stroke="#6b3e18" stroke-width="1.5"/>
+        <!-- path -->
+        <ellipse cx="150" cy="338" rx="20" ry="7"  fill="rgba(210,185,120,0.52)"/>
+        <ellipse cx="150" cy="354" rx="15" ry="5"  fill="rgba(210,185,120,0.38)"/>
+        <!-- flowers -->
+        <circle cx="98"  cy="316" r="4" fill="#e85080"/>
+        <circle cx="106" cy="322" r="3" fill="#f0a030"/>
+        <circle cx="92"  cy="322" r="3" fill="#e06040"/>
+        <circle cx="198" cy="316" r="4" fill="#cc4060"/>
+        <circle cx="206" cy="322" r="3" fill="#ffd040"/>
+        <circle cx="192" cy="323" r="3" fill="#e85080"/>
+        <!-- fence -->
+        <rect x="80"  y="302" width="4" height="26" rx="1" fill="#9b6a3a"/>
+        <rect x="96"  y="298" width="4" height="30" rx="1" fill="#9b6a3a"/>
+        <rect x="112" y="296" width="4" height="32" rx="1" fill="#9b6a3a"/>
+        <rect x="184" y="296" width="4" height="32" rx="1" fill="#9b6a3a"/>
+        <rect x="200" y="298" width="4" height="30" rx="1" fill="#9b6a3a"/>
+        <rect x="216" y="302" width="4" height="26" rx="1" fill="#9b6a3a"/>
+        <line x1="82"  y1="310" x2="218" y2="310" stroke="#9b6a3a" stroke-width="2"/>
+        <line x1="82"  y1="320" x2="218" y2="320" stroke="#8a5e30" stroke-width="1.5"/>
+      </g>
+
+      <!-- ═══ SMALL HOUSE 4 — far right background ═══ -->
+      <g transform="translate(1070, 190)" opacity="0.75">
+        <ellipse cx="90"  cy="190" rx="110" ry="60" fill="#4a8a20"/>
+        <ellipse cx="90"  cy="183" rx="96"  ry="50" fill="#5aa028"/>
+        <ellipse cx="90"  cy="145" rx="78"  ry="38" fill="#64b02e"/>
+        <!-- chimney -->
+        <rect x="110" y="112" width="11" height="38" rx="2" fill="#8b6040"/>
+        <rect x="108" y="109" width="15" height="6"  rx="1" fill="#7a5035"/>
+        <ellipse cx="115" cy="103" rx="5" ry="7" fill="rgba(200,200,180,0.30)"/>
+        <!-- face -->
+        <ellipse cx="90"  cy="196" rx="58"  ry="36" fill="#c8a878"/>
+        <!-- door -->
+        <ellipse cx="90"  cy="210" rx="20"  ry="24" fill="#6b3e18"/>
+        <ellipse cx="90"  cy="210" rx="17"  ry="21" fill="#4a2808"/>
+        <ellipse cx="90"  cy="210" rx="22"  ry="26" fill="url(#doorGlow1)" opacity="0.75"/>
+        <circle cx="99"  cy="210" r="2.5" fill="#c89030"/>
+        <!-- windows -->
+        <ellipse cx="55"  cy="192" rx="13" ry="10" fill="#5a3010"/>
+        <ellipse cx="55"  cy="192" rx="11" ry="8"  fill="#ffe8a0" opacity="0.85"/>
+        <ellipse cx="125" cy="192" rx="13" ry="10" fill="#5a3010"/>
+        <ellipse cx="125" cy="192" rx="11" ry="8"  fill="#ffe8a0" opacity="0.85"/>
+        <!-- fence -->
+        <line x1="34"  y1="228" x2="146" y2="228" stroke="#9b6a3a" stroke-width="2"/>
+        <rect x="34"  y="218" width="3" height="18" rx="1" fill="#9b6a3a"/>
+        <rect x="52"  y="216" width="3" height="20" rx="1" fill="#9b6a3a"/>
+        <rect x="70"  y="215" width="3" height="21" rx="1" fill="#9b6a3a"/>
+        <rect x="88"  y="215" width="3" height="21" rx="1" fill="#9b6a3a"/>
+        <rect x="106" y="215" width="3" height="21" rx="1" fill="#9b6a3a"/>
+        <rect x="124" y="216" width="3" height="20" rx="1" fill="#9b6a3a"/>
+        <rect x="142" y="218" width="3" height="18" rx="1" fill="#9b6a3a"/>
+      </g>
+
+      <!-- ═══ LARGE TREE centre ═══ -->
+      <g transform="translate(670, 100)">
+        <!-- trunk -->
+        <rect x="38" y="200" width="24" height="120" rx="6" fill="#6b4010"/>
+        <rect x="42" y="200" width="8"  height="120" rx="3" fill="#7a4a18"/>
+        <!-- branch left -->
+        <path d="M50 240 Q30 220 18 200" stroke="#6b4010" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <!-- branch right -->
+        <path d="M50 250 Q70 230 82 210" stroke="#6b4010" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <!-- canopy layers -->
+        <ellipse cx="50"  cy="170" rx="80" ry="65" fill="#3a7818"/>
+        <ellipse cx="42"  cy="148" rx="65" ry="52" fill="#428a20"/>
+        <ellipse cx="58"  cy="155" rx="60" ry="48" fill="#4a9222"/>
+        <ellipse cx="46"  cy="132" rx="50" ry="42" fill="#52a028"/>
+        <ellipse cx="54"  cy="122" rx="42" ry="35" fill="#5ab030"/>
+        <ellipse cx="48"  cy="110" rx="34" ry="28" fill="#62b832"/>
+      </g>
+
+      <!-- ═══ SMALLER TREE left ═══ -->
+      <g transform="translate(220, 200)" opacity="0.85">
+        <rect x="22" y="120" width="16" height="80" rx="4" fill="#6b4010"/>
+        <ellipse cx="30" cy="105" rx="50" ry="42" fill="#3e8018"/>
+        <ellipse cx="28" cy="90"  rx="40" ry="34" fill="#489022"/>
+        <ellipse cx="32" cy="78"  rx="30" ry="26" fill="#52a028"/>
+      </g>
+
+      <!-- ═══ WATER MILL — far left background ═══ -->
+      <g transform="translate(10, 230)" opacity="0.65">
+        <!-- building -->
+        <rect x="10" y="80" width="65" height="80" rx="4" fill="#c8a070"/>
+        <rect x="8"  y="78" width="69" height="6"  rx="2" fill="#b89060"/>
+        <!-- roof peak -->
+        <polygon points="44,45 0,80 88,80" fill="#8b5a30"/>
+        <polygon points="44,47 2,80 86,80" fill="#9b6a38"/>
+        <!-- water wheel (simple) -->
+        <circle cx="0" cy="130" r="28" fill="none" stroke="#6b4010" stroke-width="4"/>
+        <line x1="-28" y1="130" x2="28"  y2="130" stroke="#6b4010" stroke-width="3"/>
+        <line x1="0"   y1="102" x2="0"   y2="158" stroke="#6b4010" stroke-width="3"/>
+        <line x1="-20" y1="110" x2="20"  y2="150" stroke="#6b4010" stroke-width="2.5"/>
+        <line x1="-20" y1="150" x2="20"  y2="110" stroke="#6b4010" stroke-width="2.5"/>
+        <!-- windows -->
+        <rect x="18" y="96" width="18" height="20" rx="3" fill="#5a3010"/>
+        <rect x="20" y="98" width="14" height="16" rx="2" fill="#ffe8a0" opacity="0.80"/>
+        <rect x="49" y="96" width="18" height="20" rx="3" fill="#5a3010"/>
+        <rect x="51" y="98" width="14" height="16" rx="2" fill="#ffe8a0" opacity="0.80"/>
+        <!-- door -->
+        <rect x="28" y="130" width="26" height="30" rx="4" fill="#6b3e18"/>
+        <circle cx="50" cy="146" r="2.5" fill="#c89030"/>
+      </g>
+
+    </svg>
+  </div>
+
+    <header class="topbar">
+        <div class="brand">
+        <span class="sigil" aria-hidden="true">🍃</span>
+        <div>
+            <h1>Das große Rätsel von Hobbingen</h1>
+            <p class="subtitle">
+            Ein gemütlicher Tag im Auenland… bis du eine versiegelte Vorratskammer findest.
+            Wer <strong>80%</strong> der Prüfungen besteht, erhält das Passwort.
+            </p>
+        </div>
+        </div>
+
+        <div class="hud">
+        <div class="pill">
+            <span class="label">Ebene</span>
+            <span id="hudLevel" class="value">—</span>
+        </div>
+        <div class="pill">
+            <span class="label">Frage</span>
+            <span id="hudQuestion" class="value">—</span>
+        </div>
+        <div class="pill">
+            <span class="label">Score</span>
+            <span id="hudScore" class="value">0%</span>
+        </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- START SCREEN -->
+        <section id="screenStart" class="card screen active" aria-labelledby="startTitle">
+        <h2 id="startTitle">Willkommen in Hobbingen, Reisende:r!</h2>
+
+        <p>
+            Du wanderst über sanfte, <strong>grüne Hügel</strong>, vorbei an Wiesen voller Gänseblümchen.
+            In der Ferne rauchen Kamine, und aus runden Fenstern fällt warmes Licht.
+            Es riecht nach frischem Brot, Apfelkuchen und… nach einem Geheimnis.
+        </p>
+
+        <p>
+            Am Ende eines kleinen Pfads entdeckst du eine besonders hübsche, <strong>runde Hobbit Tür</strong>.
+            Daneben hängt ein Schild (sehr ordentlich, aber leicht schief):
+            <em>„Vorratskammer der Guten Dinge, nur für Wissende!“</em>
+        </p>
+
+        <p>
+            Als du näher kommst, hörst du leises Kichern. Hinter einem Busch sitzt ein Hobbit mit buschigen Augenbrauen,
+            einem Notizbuch und einem ernsten Gesichtsausdruck, der trotzdem freundlich wirkt.
+            Er flüstert: <strong>„Psst! Das Dorf hat eine kleine Prüfung vorbereitet. Drei Ebenen. Ein Passwort.“</strong>
+        </p>
+
+        <p>
+            Du nickst. Natürlich willst du hinein, nicht aus Gier, nein… sondern aus rein wissenschaftlicher Neugier.
+            (Und vielleicht auch wegen der legendären <strong>zweiten Frühstücks</strong> Vorräte.)
+        </p>
+
+        <div class="settings">
+            <label class="toggle">
+            <input id="shuffleToggle" type="checkbox" checked />
+            <span>Fragen innerhalb der Ebene mischen</span>
+            </label>
+            <label class="toggle">
+            <input id="instantFeedbackToggle" type="checkbox" checked />
+            <span>Sofortiges Feedback anzeigen</span>
+            </label>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+            <h3 style="margin:0 0 8px;">Die drei Ebenen der Hobbit-Prüfung</h3>
+            <ul style="margin:0; padding-left:18px; line-height:1.5;">
+            <li><strong>Ebene I:</strong> Die grünen Hügel – du beweist Aufmerksamkeit und Klarheit.</li>
+            <li><strong>Ebene II:</strong> Die runden Türen – du findest dich zurecht und erkennst Muster.</li>
+            <li><strong>Ebene III:</strong> Das große Fest – du behältst den Überblick bis zum Schluss.</li>
+            </ul>
+            <p style="margin:10px 0 0;">
+            Bestehst du insgesamt mindestens <strong>80%</strong>, verrät dir die Chronik von Hobbingen das
+            <strong>Passwort</strong> zur Vorratskammer.
+            </p>
+        </div>
+
+        <button id="btnStart" class="btn primary" style="margin-top:16px;">Die Hobbit Prüfung beginnen</button>
+
+        <p class="hint" style="margin-top:14px;">
+            Hinweis: Wenn du die Fragen austauschen willst, passiert das in <code>script.js</code>.
+            Diese Seite ist nur die Geschichte und Oberfläche.
+        </p>
+        </section>
+
+        <!-- LEVEL TRANSITION SCREEN -->
+        <section id="screenLevel" class="card screen" aria-live="polite">
+        <h2 id="levelTitle">—</h2>
+        <p id="levelText" class="subtitle" style="margin-top:10px;">—</p>
+
+        <div class="card" style="margin-top:14px;">
+            <p style="margin:0; line-height:1.5;">
+            Ein Hobbit schiebt dir einen kleinen Zettel zu.
+            Darauf steht: <em>„Nimm dir Zeit. Lies genau. Und vergiss nicht zu atmen, wir Hobbits nehmen Prüfungen ernst.“</em>
+            </p>
+        </div>
+
+        <div class="actions" style="margin-top:18px;">
+            <button id="btnLevelContinue" class="btn primary" type="button">Weiter zur Ebene</button>
+        </div>
+        </section>
+
+        <!-- QUIZ SCREEN -->
+        <section id="screenQuiz" class="card screen" aria-live="polite">
+        <div class="levelBanner" id="levelBanner">
+            <span class="levelName" id="levelName">—</span>
+            <span class="levelFlavor" id="levelFlavor">—</span>
+        </div>
+
+        <div class="progressRow">
+            <div class="progressBar" aria-hidden="true">
+            <div class="progressFill" id="progressFill"></div>
+            </div>
+            <div class="progressText" id="progressText">—</div>
+        </div>
+
+        <p class="subtitle" style="margin-top:-6px;">
+            Der Hobbit-Proktor räuspert sich. <em>„Antworten bitte ehrlich. Mogeln zählt als schlechtes Benehmen,
+            und schlechtes Benehmen führt zu… leerem Teekessel.“</em>
+        </p>
+
+        <h2 class="question" id="questionText">—</h2>
+
+        <form id="answersForm" class="answers" autocomplete="off">
+            <!-- answers injected by script.js -->
+        </form>
+
+        <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+
+        <div class="actions">
+            <!-- Wenn du Skip entfernt hast, darf dieser Button nicht mehr existieren -->
+            <button id="btnSkip" class="btn ghost" type="button" title="Optional: überspringen (zählt als falsch)">
+            Überspringen
+            </button>
+            <button id="btnNext" class="btn primary" type="button" disabled>
+            Weiter
+            </button>
+        </div>
+
+        <p class="hint" style="margin-top:14px;">
+            Tipp aus dem Auenland: Wenn du dir unsicher bist, wähle die Antwort, die <strong>am hobbitischsten</strong> klingt
+            klar, freundlich und verständlich.
+        </p>
+        </section>
+
+        <!-- RESULT SCREEN -->
+        <section id="screenResult" class="card screen" aria-labelledby="resultTitle">
+        <h2 id="resultTitle">Das Urteil von Hobbingen</h2>
+
+        <p class="subtitle" style="margin-top:10px;">
+            Die letzten Sonnenstrahlen fallen auf die runde Tür. Der Hobbit hält den Atem an.
+            <em>„Nun… bist du wissend genug für unsere Vorratskammer?“</em>
+        </p>
+
+        <div class="resultGrid">
+            <div class="resultBox">
+            <div class="resultLabel">Gesamt</div>
+            <div id="resultPercent" class="resultValue">—</div>
+            </div>
+            <div class="resultBox">
+            <div class="resultLabel">Richtig</div>
+            <div id="resultCorrect" class="resultValue">—</div>
+            </div>
+            <div class="resultBox">
+            <div class="resultLabel">Fragen</div>
+            <div id="resultTotal" class="resultValue">—</div>
+            </div>
+        </div>
+
+        <div id="passwordBox" class="passwordBox">
+            <!-- injected by script.js -->
+        </div>
+
+        <div class="actions">
+            <button id="btnReview" class="btn ghost" type="button">Antworten-Log anzeigen</button>
+            <button id="btnRestart" class="btn primary" type="button">Nochmal versuchen</button>
+        </div>
+
+        <details id="reviewLog" class="review">
+            <summary>Antworten & Lösungen</summary>
+            <div id="reviewContent" class="reviewContent"></div>
+        </details>
+
+        <p class="hint" style="margin-top:14px;">
+            Egal wie es ausgeht: In Hobbingen gibt es immer Tee. Und meistens auch Kuchen.
+        </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>© Hobbingen – Prüfungen der runden Tür</span>
+        <span class="dot">•</span>
+        <span>Offline nutzbar</span>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
