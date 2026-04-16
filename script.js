@@ -178,7 +178,7 @@ const levels = [
             answerIndex: 1,
         },
         {
-            q: "Welcher Fehler befindet sich im folgenden CSS-Code?",
+            q: "Welcher Fehler befindet sich im folgenden CSS-Code? .box { display: grid; justify-content: center; } ",
             options: [
             "center ist kein gültiger Wert für justify-items",
             "justify-items funktioniert nur in Grid-Layouts",
